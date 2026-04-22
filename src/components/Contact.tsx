@@ -13,10 +13,10 @@ const rows = [
   },
   {
     label: "LinkedIn",
-    value: "/in/rohan-mukherjee",
+    value: "/in/rohan-mukherjee1",
     Icon: Linkedin,
     accent: "accent-3",
-    href: "https://www.linkedin.com/in/rohan-mukherjee-a2099b180/",
+    href: "https://www.linkedin.com/in/rohan-mukherjee1/",
   },
   {
     label: "Nrishaala",
