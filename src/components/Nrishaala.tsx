@@ -9,12 +9,8 @@ const stats = [
   "Top-2 global",
 ];
 
-const thumbs = [
-  { id: "P7lchcHSPYk", title: "Featured episode" },
-  { id: "P7lchcHSPYk", title: "Diaspora identity" },
-  { id: "P7lchcHSPYk", title: "Money & home" },
-  { id: "P7lchcHSPYk", title: "NRI culture" },
-];
+// Single featured episode — the full library lives on YouTube/Instagram
+const FEATURED_ID = "P7lchcHSPYk";
 
 function LazyEmbed({ id, title }: { id: string; title: string }) {
   const ref = useRef<HTMLDivElement>(null);
