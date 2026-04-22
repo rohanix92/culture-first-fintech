@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 const stats = [
   { k: "1M+", v: "NRIs reached" },
@@ -7,9 +7,13 @@ const stats = [
   { k: "250K+", v: "Nrishaala subscribers" },
 ];
 
-const fade = {
+const fade: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+  },
 };
 
 export function About() {
