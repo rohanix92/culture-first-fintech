@@ -12,11 +12,14 @@ type Project = {
   result: string;
   category: Category;
   src: string;
+  mediaType?: "video" | "image";
   orientation: "landscape" | "portrait";
   href?: string;
   span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
+
+import khaleejTimes from "@/assets/khaleej-times.jpg";
 
 const projects: Project[] = [
   {
