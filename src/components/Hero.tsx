@@ -68,7 +68,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="flex justify-end mb-12"
+          className="flex justify-end mb-6"
         >
           <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card/70 backdrop-blur px-3.5 py-1.5">
             <span className="relative inline-flex h-2 w-2">
@@ -85,26 +85,33 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
-          className="font-mono text-[11px] md:text-xs uppercase tracking-[0.3em] text-muted mb-8"
+          className="font-mono text-[11px] md:text-xs uppercase tracking-[0.3em] text-muted mb-8 flex items-center flex-wrap gap-x-2"
         >
-          <span>Brand Marketer · </span>
-          <span className="relative inline-block align-baseline overflow-hidden h-[1.1em] min-w-[7ch]">
+          <span>Brand Marketer ·</span>
+          <span
+            className="relative inline-block align-baseline overflow-hidden h-[1.2em]"
+            style={{ width: "10ch" }}
+          >
             {CITIES.map((c, i) => (
               <motion.span
                 key={c}
                 initial={false}
                 animate={{
-                  y: i === cityIdx ? 0 : i === (cityIdx - 1 + CITIES.length) % CITIES.length ? "-110%" : "110%",
+                  y:
+                    i === cityIdx
+                      ? "0%"
+                      : i === (cityIdx - 1 + CITIES.length) % CITIES.length
+                        ? "-110%"
+                        : "110%",
                   opacity: i === cityIdx ? 1 : 0,
                 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute left-0 top-0 text-accent"
+                className="absolute left-0 top-0 whitespace-nowrap text-accent"
               >
                 {c}
               </motion.span>
             ))}
           </span>
-          
         </motion.div>
 
         <h1 className="font-serif italic text-fg leading-[0.92] tracking-[-0.02em] text-[clamp(3rem,8vw,7rem)] max-w-[14ch]">
