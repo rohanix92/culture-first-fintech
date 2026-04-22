@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
 
 type Category = "Campaigns" | "Content" | "Brand";
 
