@@ -20,6 +20,8 @@ type Project = {
 };
 
 import khaleejTimes from "@/assets/khaleej-times.jpg";
+import khaleejStartup from "@/assets/khaleej-times-startup.jpg";
+import asiaCupPress from "@/assets/press-khaleej-asiacup.png";
 
 const projects: Project[] = [
   {
@@ -37,7 +39,7 @@ const projects: Project[] = [
   },
   {
     id: "KT",
-    title: "Khaleej Times — Front Page Takeover",
+    title: "Khaleej Times — Asia Cup Front Page",
     blurb: "We bought the front page.",
     desc: "Hours after India lifted the Asia Cup 2025, Aspora landed on the Khaleej Times front page across the UAE — a full-page brand moment riding the biggest cultural high of the year for the diaspora.",
     result: "Most-talked-about NRI fintech ad of the week.",
@@ -46,6 +48,18 @@ const projects: Project[] = [
     mediaType: "image",
     orientation: "portrait",
     href: "https://www.linkedin.com/posts/rohan-mukherjee1_we-took-a-front-page-gamble-for-aspora-activity-7378322861163204608-jL9t",
+    accent: "accent-2",
+  },
+  {
+    id: "KT2",
+    title: "Khaleej Times — UAE Startup Day",
+    blurb: "Front page, twice over.",
+    desc: "Front-page Khaleej Times feature on the UAE Startup Day — Aspora running alongside the country's biggest entrepreneurship moment, with Yuvraj Singh fronting the spread.",
+    result: "Back-to-back front-page ownership.",
+    category: "Campaigns",
+    src: khaleejStartup,
+    mediaType: "image",
+    orientation: "portrait",
     accent: "accent-2",
   },
   {
@@ -99,17 +113,29 @@ const projects: Project[] = [
   },
   {
     id: "F",
-    title: "England vs India — Cricket OOH 2025",
-    blurb: "Cricket, the UK, and us.",
-    desc: "OOH across the UK during the India tour of England 2025 — stadium routes, city centres, and the sea of blue jerseys.",
-    result: "Category-defining moment.",
+    title: "Cricket Season Takeovers — UK & UAE",
+    blurb: "If India's playing, we're playing.",
+    desc: "OOH and on-ground across the India tour of England 2025 and the Asia Cup in the UAE — stadium routes, city centres, fan parks, and seas of blue jerseys. Cricket is the connective tissue of the diaspora; we showed up every season.",
+    result: "Category-defining cricket-season ownership.",
     category: "Campaigns",
     src: "/videos/video6.mp4",
     orientation: "portrait",
     href: "https://www.linkedin.com/posts/get-aspora_the-sea-of-blue-jerseys-flooding-the-streets-activity-7359097482951217152-CR4y",
     accent: "accent",
   },
-];
+  {
+    id: "PRESS",
+    title: "Press — Aspora unites Indians via cricket",
+    blurb: "20,000 caps. One sea of purple.",
+    desc: "Khaleej Times feature on the Aspora India vs Pakistan stadium takeover — 20,000+ fans in Aspora caps signed by Yuvraj Singh, dominating broadcasts and social feeds.",
+    result: "Earned media across UAE outlets.",
+    category: "Campaigns",
+    src: asiaCupPress,
+    mediaType: "image",
+    orientation: "portrait",
+    href: "https://www.khaleejtimes.com/kt-network/aspora-unites-global-indians-through-cricket-at-the-india-vs-pakistan-games",
+    accent: "accent-3",
+  },
 
 const filters: ("All" | Category)[] = ["All", "Campaigns", "Content", "Brand"];
 
