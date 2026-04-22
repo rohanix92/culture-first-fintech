@@ -104,7 +104,7 @@ export function Hero() {
               </motion.span>
             ))}
           </span>
-          <span> · 2026</span>
+          
         </motion.div>
 
         <h1 className="font-serif italic text-fg leading-[0.92] tracking-[-0.02em] text-[clamp(3rem,8vw,7rem)] max-w-[14ch]">

@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
+import khaleejTimes from "@/assets/khaleej-times.jpg";
+import khaleejStartup from "@/assets/khaleej-times-startup.jpg";
+import asiaCupPress from "@/assets/press-khaleej-asiacup.png";
 
 type Category = "Campaigns" | "Content" | "Brand";
 
@@ -18,10 +21,6 @@ type Project = {
   span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
-
-import khaleejTimes from "@/assets/khaleej-times.jpg";
-import khaleejStartup from "@/assets/khaleej-times-startup.jpg";
-import asiaCupPress from "@/assets/press-khaleej-asiacup.png";
 
 const projects: Project[] = [
   {
