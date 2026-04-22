@@ -68,7 +68,7 @@ export function Hero() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15 }}
-          className="flex justify-end mb-12"
+          className="flex justify-end mb-6"
         >
           <div className="inline-flex items-center gap-2.5 rounded-full border border-border bg-card/70 backdrop-blur px-3.5 py-1.5">
             <span className="relative inline-flex h-2 w-2">
