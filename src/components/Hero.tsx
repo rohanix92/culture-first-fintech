@@ -2,12 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowDown } from "lucide-react";
 
-const HEADLINE = ["I", "make", "fintech", "feel", "like", "pop", "culture."];
+const HEADLINE = ["I", "make", "tech", "feel", "like", "pop", "culture."];
+const CITIES = ["London", "Dubai", "New York", "Berlin", "Dublin"];
 
 export function Hero() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
+  const [cityIdx, setCityIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setCityIdx((i) => (i + 1) % CITIES.length), 1800);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     if (reduce) return;
@@ -80,7 +87,24 @@ export function Hero() {
           transition={{ delay: 0.05 }}
           className="font-mono text-[11px] md:text-xs uppercase tracking-[0.3em] text-muted mb-8"
         >
-          Brand Marketer · London · 2026
+          <span>Brand Marketer · </span>
+          <span className="relative inline-block align-baseline overflow-hidden h-[1.1em] min-w-[7ch]">
+            {CITIES.map((c, i) => (
+              <motion.span
+                key={c}
+                initial={false}
+                animate={{
+                  y: i === cityIdx ? 0 : i === (cityIdx - 1 + CITIES.length) % CITIES.length ? "-110%" : "110%",
+                  opacity: i === cityIdx ? 1 : 0,
+                }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute left-0 top-0 text-accent"
+              >
+                {c}
+              </motion.span>
+            ))}
+          </span>
+          <span> · 2026</span>
         </motion.div>
 
         <h1 className="font-serif italic text-fg leading-[0.92] tracking-[-0.02em] text-[clamp(3rem,8vw,7rem)] max-w-[14ch]">
@@ -112,8 +136,8 @@ export function Hero() {
           className="mt-10 max-w-[560px] text-base md:text-lg leading-relaxed text-muted"
         >
           Brand & marketing at Aspora — building the cultural vocabulary for 32M
-          NRIs sending money home. From Amitabh Bachchan on KBC to the
-          first-ever NRI cricket-season OOH in the UK.
+          NRIs sending money home. From Amitabh Bachchan on KBC to riding every
+          cricket season — Asia Cup in the UAE, India's tour of England in the UK.
         </motion.p>
 
         <motion.div

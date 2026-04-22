@@ -54,21 +54,22 @@ export function About() {
             <div className="lg:col-span-7 space-y-7 text-lg md:text-xl leading-relaxed text-fg/85 max-w-[60ch]">
               <motion.p variants={fade}>
                 I'm <span className="text-accent">Rohan</span> — a brand
-                marketer who believes the best fintech marketing doesn't feel
-                like fintech marketing. It feels like culture. At Aspora
+                marketer who believes the best tech marketing doesn't feel
+                like tech marketing. It feels like culture. At Aspora
                 (Sequoia, Greylock, Y Combinator-backed, $4B+ in NRI remittance
                 volume), I build the brand across the UK, UAE, and US — where
                 the product is invisible but the community is everything.
               </motion.p>
               <motion.p variants={fade}>
                 That's meant reaching 700K+ NRIs through above-the-line (Amitabh
-                Bachchan on KBC, UK cricket-season OOH, Dubai street takeovers,
-                UAE front-page newspaper gambles), cultural moments (Leicester
+                Bachchan on KBC, cricket-season takeovers across the UAE Asia
+                Cup and India's tour of England, Dubai street activations, UAE
+                front-page newspaper gambles), cultural moments (Leicester
                 Mela, BAPS Neasden, Eid gifting), and original content IP —{" "}
                 <span className="text-accent-2">Nrishaala</span>, the
-                YouTube-first talk show I built from zero into one of the top-2
-                content properties in the global NRI category (250K+ subs,
-                videos crossing 50M+ views).
+                YouTube + Instagram-first talk show I built from zero into one
+                of the top-2 content properties in the global NRI category
+                (250K+ subs, 350+ videos, 50M+ views).
               </motion.p>
               <motion.p variants={fade}>
                 I think in campaigns, ship in sprints, and measure in both

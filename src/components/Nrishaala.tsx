@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, ArrowUpRight } from "lucide-react";
+import { Play, ArrowUpRight, Youtube, Instagram } from "lucide-react";
 
 const stats = [
-  "69.8K subs",
-  "338 videos",
-  "990K top video",
+  "250K+ subs",
+  "350+ videos",
+  "50M+ views",
   "Top-2 global",
 ];
 
@@ -81,7 +81,7 @@ export function Nrishaala() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="font-mono text-[11px] uppercase tracking-[0.26em] text-muted mb-10"
         >
-          ◆ 04 — Spotlight · A content IP
+          ◆ 05 — Spotlight · A content IP
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -102,14 +102,24 @@ export function Nrishaala() {
                 </span>
               ))}
             </div>
-            <a
-              href="https://www.youtube.com/@NRIShaala"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] hover:bg-card hover:border-accent-2 hover:text-accent-2 transition-colors"
-            >
-              Visit channel <ArrowUpRight className="h-4 w-4" />
-            </a>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <a
+                href="https://www.youtube.com/@NRIShaala"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] hover:bg-card hover:border-accent-2 hover:text-accent-2 transition-colors"
+              >
+                <Youtube className="h-4 w-4" /> YouTube <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.instagram.com/nrishaala/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 font-mono text-xs uppercase tracking-[0.18em] hover:bg-card hover:border-accent-2 hover:text-accent-2 transition-colors"
+              >
+                <Instagram className="h-4 w-4" /> Instagram <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
           <div className="lg:col-span-7 space-y-6">

@@ -6,6 +6,7 @@ import { Marquee } from "@/components/Marquee";
 import { About } from "@/components/About";
 import { Work } from "@/components/Work";
 import { Events } from "@/components/Events";
+import { Guerrilla } from "@/components/Guerrilla";
 import { Nrishaala } from "@/components/Nrishaala";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -39,6 +40,7 @@ function Index() {
       <About />
       <Work />
       <Events />
+      <Guerrilla />
       <Nrishaala />
       <Contact />
       <Footer />

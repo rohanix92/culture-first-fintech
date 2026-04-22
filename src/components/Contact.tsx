@@ -5,11 +5,11 @@ import { toast } from "sonner";
 const rows = [
   {
     label: "Email",
-    value: "rohan@aspora.com",
+    value: "rohanix93@gmail.com",
     Icon: Mail,
     accent: "accent",
     copy: true,
-    href: "mailto:rohan@aspora.com",
+    href: "mailto:rohanix93@gmail.com",
   },
   {
     label: "LinkedIn",
@@ -38,7 +38,7 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="font-mono text-[11px] uppercase tracking-[0.26em] text-muted mb-10"
         >
-          ◆ 05 — Contact
+          ◆ 06 — Contact
         </motion.div>
 
         <motion.h2
