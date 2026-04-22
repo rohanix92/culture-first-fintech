@@ -12,11 +12,14 @@ type Project = {
   result: string;
   category: Category;
   src: string;
+  mediaType?: "video" | "image";
   orientation: "landscape" | "portrait";
   href?: string;
   span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
+
+import khaleejTimes from "@/assets/khaleej-times.jpg";
 
 const projects: Project[] = [
   {
@@ -31,6 +34,19 @@ const projects: Project[] = [
     href: "https://www.linkedin.com/posts/rohan-mukherjee1_kbc-aspora-sonyentertainmenttelevision-ugcPost-7405115787331481600-wx4R",
     span: "md:col-span-2 md:row-span-2",
     accent: "accent",
+  },
+  {
+    id: "KT",
+    title: "Khaleej Times — Front Page Takeover",
+    blurb: "We bought the front page.",
+    desc: "Hours after India lifted the Asia Cup 2025, Aspora landed on the Khaleej Times front page across the UAE — a full-page brand moment riding the biggest cultural high of the year for the diaspora.",
+    result: "Most-talked-about NRI fintech ad of the week.",
+    category: "Campaigns",
+    src: khaleejTimes,
+    mediaType: "image",
+    orientation: "portrait",
+    href: "https://www.linkedin.com/posts/rohan-mukherjee1_we-took-a-front-page-gamble-for-aspora-activity-7378322861163204608-jL9t",
+    accent: "accent-2",
   },
   {
     id: "B",
@@ -115,6 +131,7 @@ const accentMap = {
 
 function ProjectCard({ p }: { p: Project }) {
   const a = accentMap[p.accent ?? "accent"];
+  const isImage = p.mediaType === "image";
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
@@ -122,6 +139,7 @@ function ProjectCard({ p }: { p: Project }) {
 
   // Autoplay (muted) on hover, pause on leave (desktop nicety)
   useEffect(() => {
+    if (isImage) return;
     const v = videoRef.current;
     if (!v) return;
     if (hovered && !playing) {
@@ -130,7 +148,7 @@ function ProjectCard({ p }: { p: Project }) {
       v.pause();
       v.currentTime = 0;
     }
-  }, [hovered, playing]);
+  }, [hovered, playing, isImage]);
 
   const togglePlay = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -164,41 +182,54 @@ function ProjectCard({ p }: { p: Project }) {
       onMouseLeave={() => setHovered(false)}
       className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 transition-colors ${p.span ?? ""}`}
     >
-      {/* Video */}
+      {/* Media */}
       <div
         className={`relative w-full bg-black overflow-hidden ${
           p.orientation === "portrait" ? "aspect-[9/16]" : "aspect-video"
         }`}
       >
-        <video
-          ref={videoRef}
-          src={p.src}
-          muted={muted}
-          loop
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+        {isImage ? (
+          <motion.img
+            src={p.src}
+            alt={p.title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover"
+            animate={{ scale: hovered ? 1.04 : 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={p.src}
+            muted={muted}
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
         {/* gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/20 pointer-events-none" />
 
-        {/* Controls */}
-        <div className="absolute bottom-3 right-3 flex gap-2 z-10">
-          <button
-            onClick={toggleMute}
-            aria-label={muted ? "Unmute" : "Mute"}
-            className="h-9 w-9 rounded-full bg-black/60 backdrop-blur border border-white/15 text-white grid place-items-center hover:bg-black/80 transition"
-          >
-            {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-          </button>
-          <button
-            onClick={togglePlay}
-            aria-label={playing ? "Pause" : "Play"}
-            className={`h-9 w-9 rounded-full ${a.bg} text-bg grid place-items-center hover:scale-105 transition`}
-          >
-            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
-          </button>
-        </div>
+        {/* Controls (video only) */}
+        {!isImage && (
+          <div className="absolute bottom-3 right-3 flex gap-2 z-10">
+            <button
+              onClick={toggleMute}
+              aria-label={muted ? "Unmute" : "Mute"}
+              className="h-9 w-9 rounded-full bg-black/60 backdrop-blur border border-white/15 text-white grid place-items-center hover:bg-black/80 transition"
+            >
+              {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            </button>
+            <button
+              onClick={togglePlay}
+              aria-label={playing ? "Pause" : "Play"}
+              className={`h-9 w-9 rounded-full ${a.bg} text-bg grid place-items-center hover:scale-105 transition`}
+            >
+              {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
+            </button>
+          </div>
+        )}
 
         {/* Category chip */}
         <div className="absolute top-3 left-3 z-10">

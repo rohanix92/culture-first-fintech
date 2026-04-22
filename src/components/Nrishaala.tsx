@@ -81,7 +81,7 @@ export function Nrishaala() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="font-mono text-[11px] uppercase tracking-[0.26em] text-muted mb-10"
         >
-          ◆ 03 — Spotlight · A content IP
+          ◆ 04 — Spotlight · A content IP
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
