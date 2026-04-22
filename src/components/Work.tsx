@@ -311,7 +311,7 @@ export function Work() {
               ◆ 02 — Selected Work
             </div>
             <h2 className="font-serif italic text-5xl md:text-7xl leading-[0.98] tracking-[-0.01em] max-w-3xl">
-              Six moments, <span className="text-accent">one playbook.</span>
+              A few moments, <span className="text-accent">one playbook.</span>
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
