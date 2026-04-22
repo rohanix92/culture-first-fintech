@@ -118,31 +118,26 @@ export function Nrishaala() {
             </div>
           </div>
 
-          <div className="lg:col-span-7 space-y-6">
-            <LazyEmbed id="P7lchcHSPYk" title="Nrishaala featured episode" />
-            <div className="grid grid-cols-2 gap-4">
-              {thumbs.map((t, i) => (
-                <a
-                  key={i}
-                  href="https://www.youtube.com/@NRIShaala"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative aspect-video rounded-xl overflow-hidden border border-border bg-card hover:border-accent-2 transition-colors"
+          <div className="lg:col-span-7">
+            <LazyEmbed id={FEATURED_ID} title="Nrishaala featured episode" />
+            <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {[
+                { k: "Tax", v: "Retire rich in India" },
+                { k: "Identity", v: "Belonging across borders" },
+                { k: "Money", v: "NRE / NRO / FCNR demystified" },
+                { k: "Culture", v: "Festivals, food, family" },
+              ].map((c) => (
+                <div
+                  key={c.k}
+                  className="rounded-xl border border-border bg-card/60 p-4"
                 >
-                  <img
-                    loading="lazy"
-                    alt={t.title}
-                    src={`https://i.ytimg.com/vi/${t.id}/hqdefault.jpg`}
-                    className="absolute inset-0 h-full w-full object-cover opacity-70 group-hover:opacity-100 transition-opacity"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                    <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-fg">
-                      {t.title}
-                    </span>
-                    <Play className="h-4 w-4 text-accent-2" />
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent-2">
+                    {c.k}
                   </div>
-                </a>
+                  <div className="mt-1.5 text-sm text-fg/85 leading-snug">
+                    {c.v}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
