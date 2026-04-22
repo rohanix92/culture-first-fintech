@@ -225,6 +225,16 @@ function ProjectCard({ p }: { p: Project }) {
         <div className={`mt-5 font-mono text-xs uppercase tracking-[0.16em] ${a.text}`}>
           → {p.result}
         </div>
+        {p.href && (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-1.5 self-start font-mono text-[10px] uppercase tracking-[0.2em] text-muted hover:text-fg transition-colors"
+          >
+            View post <ArrowUpRight className="h-3 w-3" />
+          </a>
+        )}
       </div>
     </motion.div>
   );
