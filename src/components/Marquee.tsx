@@ -3,7 +3,7 @@ const items = [
   "$4B+ volume processed",
   "3 markets launched",
   "Top-2 NRI content IP",
-  "First UK NRI cricket OOH",
+  "Cricket-season takeovers · UAE + UK",
   "KBC × Amitabh Bachchan integration",
 ];
 
