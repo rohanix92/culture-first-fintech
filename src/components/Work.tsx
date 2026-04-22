@@ -13,6 +13,7 @@ type Project = {
   category: Category;
   src: string;
   orientation: "landscape" | "portrait";
+  href?: string;
   span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
