@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 
 type Category = "Campaigns" | "Content" | "Brand";
 
@@ -11,8 +11,9 @@ type Project = {
   desc: string;
   result: string;
   category: Category;
-  href: string;
-  span?: string; // tailwind grid spans
+  src: string;
+  orientation: "landscape" | "portrait";
+  span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
 
@@ -24,92 +25,66 @@ const projects: Project[] = [
     desc: "Aspora integrated into Kaun Banega Crorepati — the most-watched Indian TV show, delivered into NRI living rooms via satellite.",
     result: "Cultural permission to exist.",
     category: "Campaigns",
-    href: "https://www.linkedin.com/posts/rohan-mukherjee-a2099b180_asporaxkbc-asporaxbigb-activity-7393611884373852162-G0kk",
+    src: "/videos/video3.mp4",
+    orientation: "landscape",
     span: "md:col-span-2 md:row-span-2",
     accent: "accent",
   },
   {
     id: "B",
-    title: "Nrishaala",
-    blurb: "A talk show, built from zero.",
-    desc: "YouTube-first IP on diaspora culture, identity, money. 69.8K subs, 338 videos, 990K+ top video.",
-    result: "Top-2 NRI content property globally.",
-    category: "Content",
-    href: "https://www.youtube.com/@NRIShaala",
-    span: "md:row-span-2",
-    accent: "accent-2",
+    title: "Yuvraj Singh Brand Film",
+    blurb: "Six balls. Six sixes. One Aspora.",
+    desc: "Brand film with Yuvraj Singh — a tribute to the NRI moment that lives forever.",
+    result: "2M+ organic views.",
+    category: "Brand",
+    src: "/videos/video1.mp4",
+    orientation: "landscape",
+    span: "md:col-span-2",
+    accent: "accent-3",
   },
   {
     id: "C",
-    title: "London Year-End OOH",
-    blurb: "NRI = Never Rip Off Indians.",
-    desc: "Year-end London takeover with Noise Media. Tubes, buses, DOOH.",
-    result: "1st NRI fintech to own London holiday season.",
-    category: "Campaigns",
-    href: "https://www.linkedin.com/posts/rohan-mukherjee-a2099b180_the-story-behind-asporas-year-end-takeover-activity-7274897770258743296-h5Y7",
-    accent: "accent",
+    title: "Neena Gupta Brand Films",
+    blurb: "Mom knows. Aspora knows.",
+    desc: "Brand films with Neena Gupta capturing the emotional core of sending money home.",
+    result: "Highest brand-recall scores in category.",
+    category: "Brand",
+    src: "/videos/video2.mp4",
+    orientation: "landscape",
+    accent: "accent-3",
   },
   {
     id: "D",
-    title: "Dubai Street Takeover",
-    blurb: "Owning the streets of the Gulf.",
-    desc: "DOOH, transit, mall media across Dubai.",
-    result: "Aspora top-of-mind in UAE.",
+    title: "The Cashpora Truck — UAE",
+    blurb: "We drove cash through Dubai.",
+    desc: "Experiential truck campaign across the UAE — turning remittance into a street-level cultural moment.",
+    result: "Trended #1 on UAE social.",
     category: "Campaigns",
-    href: "https://www.linkedin.com/posts/rohan-mukherjee-a2099b180_dubaistreettakeover-asporainthedubaiair-activity-7371095660088393728-K9dS",
+    src: "/videos/video4.mp4",
+    orientation: "portrait",
     accent: "accent",
   },
   {
     id: "E",
-    title: "UK Cricket Season OOH",
-    blurb: "Cricket, the UK, and us.",
-    desc: "First-ever NRI fintech OOH during UK cricket season.",
-    result: "Category-defining moment.",
+    title: "London — NRI = Never Rip-Off Indians",
+    blurb: "Year-end London takeover.",
+    desc: "Tubes, buses, DOOH across London. The first NRI fintech to own the holiday season.",
+    result: "1st NRI fintech to own London Q4.",
     category: "Campaigns",
-    href: "https://www.linkedin.com/posts/rohan-mukherjee-a2099b180_asporaxcricket-asporauk-activity-7336527195167424512-nF4G",
-    span: "md:col-span-2",
+    src: "/videos/video5.mp4",
+    orientation: "portrait",
     accent: "accent",
   },
   {
     id: "F",
-    title: "UAE Front-Page Gamble",
-    blurb: "Front page of the UAE.",
-    desc: "Full-page newspaper wraps in the UAE's biggest dailies on a peak remittance day.",
-    result: "10M+ impressions, one day.",
+    title: "England vs India — Cricket OOH 2025",
+    blurb: "Cricket, the UK, and us.",
+    desc: "First-ever NRI fintech OOH during the India tour of England — across stadium routes and city centres.",
+    result: "Category-defining moment.",
     category: "Campaigns",
-    href: "https://www.linkedin.com/posts/rohan-mukherjee-a2099b180_gulfnews-khaleejtimes-aspora-activity-7315289317988069377-76bp",
+    src: "/videos/video6.mp4",
+    orientation: "portrait",
     accent: "accent",
-  },
-  {
-    id: "G",
-    title: "Ad Films",
-    blurb: "Films that get it.",
-    desc: "Two films capturing NRI specificity: haggling skills + '6 balls, 6 sixes' cricket tribute.",
-    result: "2M+ organic views combined.",
-    category: "Brand",
-    href: "https://www.youtube.com/@aspora_money",
-    span: "md:col-span-2",
-    accent: "accent-3",
-  },
-  {
-    id: "H",
-    title: "Cultural Events",
-    blurb: "Showing up where the community is.",
-    desc: "Leicester Mela, BAPS Neasden Navratri, Palmer Park events.",
-    result: "10K+ community touchpoints.",
-    category: "Brand",
-    href: "https://www.linkedin.com/in/rohan-mukherjee-a2099b180/recent-activity/all/",
-    accent: "accent-3",
-  },
-  {
-    id: "I",
-    title: "Eid Gifting Campaign",
-    blurb: "Eid, on us.",
-    desc: "Gifting campaign around Eid remittances in UAE.",
-    result: "Highest-ever campaign CTR for Aspora UAE.",
-    category: "Brand",
-    href: "https://www.linkedin.com/in/rohan-mukherjee-a2099b180/recent-activity/all/",
-    accent: "accent-3",
   },
 ];
 
@@ -133,55 +108,118 @@ const accentMap = {
 
 function ProjectCard({ p }: { p: Project }) {
   const a = accentMap[p.accent ?? "accent"];
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [hovered, setHovered] = useState(false);
+
+  // Autoplay (muted) on hover, pause on leave (desktop nicety)
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (hovered && !playing) {
+      v.play().catch(() => {});
+    } else if (!hovered && !playing) {
+      v.pause();
+      v.currentTime = 0;
+    }
+  }, [hovered, playing]);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setMuted((m) => !m);
+  };
+
   return (
-    <motion.a
+    <motion.div
       layout
-      href={p.href}
-      target="_blank"
-      rel="noopener noreferrer"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -6, scale: 1.015 }}
-      className={`group relative flex flex-col justify-between bg-card border border-border rounded-2xl p-6 md:p-8 min-h-[260px] overflow-hidden hover:border-fg/30 transition-colors ${p.span ?? ""}`}
+      whileHover={{ y: -6 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 transition-colors ${p.span ?? ""}`}
     >
+      {/* Video */}
       <div
-        className={`absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`}
-        style={{
-          background:
-            p.accent === "accent-2"
-              ? "radial-gradient(60% 80% at 30% 0%, rgba(198,255,61,0.10), transparent 70%)"
-              : p.accent === "accent-3"
-                ? "radial-gradient(60% 80% at 30% 0%, rgba(255,45,156,0.10), transparent 70%)"
-                : "radial-gradient(60% 80% at 30% 0%, rgba(255,77,31,0.12), transparent 70%)",
-        }}
-      />
-      <div className="flex items-start justify-between gap-4">
-        <span
-          className={`inline-flex items-center gap-1.5 rounded-full border ${a.border} ${a.chipBg} ${a.text} font-mono text-[10px] uppercase tracking-[0.18em] px-2.5 py-1`}
-        >
-          <span className={`h-1.5 w-1.5 rounded-full ${a.bg}`} />
-          {p.category}
-        </span>
-        <ArrowUpRight className="h-5 w-5 text-muted group-hover:text-fg group-hover:rotate-12 transition-all" />
+        className={`relative w-full bg-black overflow-hidden ${
+          p.orientation === "portrait" ? "aspect-[9/16]" : "aspect-video"
+        }`}
+      >
+        <video
+          ref={videoRef}
+          src={p.src}
+          muted={muted}
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/20 pointer-events-none" />
+
+        {/* Controls */}
+        <div className="absolute bottom-3 right-3 flex gap-2 z-10">
+          <button
+            onClick={toggleMute}
+            aria-label={muted ? "Unmute" : "Mute"}
+            className="h-9 w-9 rounded-full bg-black/60 backdrop-blur border border-white/15 text-white grid place-items-center hover:bg-black/80 transition"
+          >
+            {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+          </button>
+          <button
+            onClick={togglePlay}
+            aria-label={playing ? "Pause" : "Play"}
+            className={`h-9 w-9 rounded-full ${a.bg} text-bg grid place-items-center hover:scale-105 transition`}
+          >
+            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
+          </button>
+        </div>
+
+        {/* Category chip */}
+        <div className="absolute top-3 left-3 z-10">
+          <span
+            className={`inline-flex items-center gap-1.5 rounded-full border ${a.border} bg-black/50 backdrop-blur ${a.text} font-mono text-[10px] uppercase tracking-[0.18em] px-2.5 py-1`}
+          >
+            <span className={`h-1.5 w-1.5 rounded-full ${a.bg}`} />
+            {p.category}
+          </span>
+        </div>
       </div>
 
-      <div className="mt-10">
-        <h3 className="font-serif italic text-3xl md:text-4xl leading-[1.05] text-fg">
+      {/* Text */}
+      <div className="p-6 md:p-7 flex-1 flex flex-col">
+        <h3 className="font-serif italic text-2xl md:text-3xl leading-[1.05] text-fg">
           {p.blurb}
         </h3>
         <div className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
           {p.title}
         </div>
-        <p className="mt-5 text-sm md:text-base text-fg/75 leading-relaxed max-w-[44ch]">
+        <p className="mt-4 text-sm text-fg/75 leading-relaxed max-w-[52ch]">
           {p.desc}
         </p>
-        <div className={`mt-6 font-mono text-xs uppercase tracking-[0.16em] ${a.text}`}>
+        <div className={`mt-5 font-mono text-xs uppercase tracking-[0.16em] ${a.text}`}>
           → {p.result}
         </div>
       </div>
-    </motion.a>
+    </motion.div>
   );
 }
 
@@ -198,7 +236,7 @@ export function Work() {
               ◆ 02 — Selected Work
             </div>
             <h2 className="font-serif italic text-5xl md:text-7xl leading-[0.98] tracking-[-0.01em] max-w-3xl">
-              Nine moments, <span className="text-accent">one playbook.</span>
+              Six moments, <span className="text-accent">one playbook.</span>
             </h2>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -228,7 +266,7 @@ export function Work() {
         <LayoutGroup>
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-3 auto-rows-[260px] gap-5"
+            className="grid grid-cols-1 md:grid-cols-3 gap-5"
           >
             <AnimatePresence mode="popLayout">
               {visible.map((p) => (
