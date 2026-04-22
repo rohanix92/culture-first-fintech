@@ -136,6 +136,7 @@ const projects: Project[] = [
     href: "https://www.khaleejtimes.com/kt-network/aspora-unites-global-indians-through-cricket-at-the-india-vs-pakistan-games",
     accent: "accent-3",
   },
+];
 
 const filters: ("All" | Category)[] = ["All", "Campaigns", "Content", "Brand"];
 
