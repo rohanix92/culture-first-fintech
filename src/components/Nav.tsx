@@ -4,6 +4,7 @@ import confetti from "canvas-confetti";
 
 const links = [
   { label: "Work", href: "#work" },
+  { label: "Events", href: "#events" },
   { label: "About", href: "#about" },
   { label: "Nrishaala", href: "#nrishaala" },
   { label: "Contact", href: "#contact" },
