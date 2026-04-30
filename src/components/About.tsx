@@ -1,10 +1,10 @@
 import { motion, type Variants } from "framer-motion";
 
 const stats = [
-  { k: "1M+", v: "NRIs reached" },
-  { k: "$4B+", v: "Remittance volume" },
-  { k: "4", v: "Markets · UK · EU · UAE · US" },
-  { k: "250K+", v: "Nrishaala subscribers" },
+  { k: "500M+", v: "OOH impressions · last 12 months" },
+  { k: "50+", v: "Events conceptualised & executed" },
+  { k: "5", v: "Markets · UK · EU · UAE · US · India" },
+  { k: "100M+", v: "Views · 10M+ subs across content IPs" },
 ];
 
 const fade: Variants = {
