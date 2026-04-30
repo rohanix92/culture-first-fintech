@@ -97,7 +97,7 @@ export function Events() {
         </div>
 
         {/* Mosaic */}
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {events.map((e, i) => {
             const a = e.accent ?? "accent";
             return (
@@ -108,22 +108,23 @@ export function Events() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.55, delay: (i % 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className={`group relative overflow-hidden rounded-xl border border-border bg-card ${e.span ?? ""}`}
+                className={`group overflow-hidden rounded-xl border border-border bg-card ${e.span ?? ""}`}
               >
-                <img
-                  src={e.src}
-                  alt={`${e.title} — ${e.city}`}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-                <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={e.src}
+                    alt={`${e.title} — ${e.city}`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
+                <figcaption className="p-3 md:p-4">
                   <div className={`inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] ${accentText[a]} mb-1.5`}>
                     <span className={`h-1.5 w-1.5 rounded-full ${accentDot[a]}`} />
                     <MapPin className="h-3 w-3" />
                     {e.city}
                   </div>
-                  <div className="font-serif italic text-lg md:text-xl text-white leading-tight">
+                  <div className="font-serif italic text-sm md:text-base text-fg leading-tight">
                     {e.title}
                   </div>
                 </figcaption>

@@ -94,7 +94,7 @@ export function Guerrilla() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[260px] gap-3 md:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {items.map((e, i) => (
             <motion.figure
               key={e.title}
@@ -103,25 +103,26 @@ export function Guerrilla() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: (i % 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className={`group relative overflow-hidden rounded-xl border border-border bg-card ${e.span ?? ""}`}
+              className={`group overflow-hidden rounded-xl border border-border bg-card ${e.span ?? ""}`}
             >
-              <img
-                src={e.src}
-                alt={`${e.title} — ${e.city}`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent" />
-              <figcaption className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-                <div className={`inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] ${accentText[e.accent]} mb-1.5`}>
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={e.src}
+                  alt={`${e.title} — ${e.city}`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+              </div>
+              <figcaption className="p-4 md:p-5">
+                <div className={`inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] ${accentText[e.accent]} mb-2`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${accentDot[e.accent]}`} />
                   <MapPin className="h-3 w-3" />
                   {e.city}
                 </div>
-                <div className="font-serif italic text-lg md:text-xl text-white leading-tight">
+                <div className="font-serif italic text-base md:text-lg text-fg leading-tight">
                   {e.title}
                 </div>
-                <div className="mt-1.5 text-xs md:text-sm text-white/75 leading-snug max-w-[44ch]">
+                <div className="mt-1.5 text-xs md:text-sm text-muted leading-snug max-w-[44ch]">
                   {e.blurb}
                 </div>
               </figcaption>
