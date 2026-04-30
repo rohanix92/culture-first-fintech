@@ -142,9 +142,7 @@ export function Hero() {
           transition={{ delay: 0.9, duration: 0.7 }}
           className="mt-10 max-w-[560px] text-base md:text-lg leading-relaxed text-muted"
         >
-          Brand & marketing at Aspora — building the cultural vocabulary for 32M
-          NRIs sending money home. From Amitabh Bachchan on KBC to riding every
-          cricket season — Asia Cup in the UAE, India's tour of England in the UK.
+          Brand & marketing across the UK, UAE, US, and Europe — turning fintech into culture for 32M NRIs through celebrity campaigns, cricket-season takeovers, street activations, and original content IP.
         </motion.p>
 
         <motion.div
