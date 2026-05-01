@@ -1,10 +1,21 @@
 import { motion, type Variants } from "framer-motion";
 
-const stats = [
-  { k: "500M+", v: "OOH impressions · last 12 months" },
-  { k: "50+", v: "Events conceptualised & executed" },
-  { k: "5", v: "Markets · UK · EU · UAE · US · India" },
-  { k: "100M+", v: "Views · 10M+ subs across content IPs" },
+type Stat = {
+  k: string;
+  label: string;
+  sub?: string;
+  markets?: string[];
+};
+
+const stats: Stat[] = [
+  { k: "500M+", label: "OOH Impressions" },
+  { k: "50+", label: "Events", sub: "Conceptualised & executed" },
+  { k: "100M+", label: "Content Views", sub: "10M+ subscribers across IPs" },
+  {
+    k: "5",
+    label: "Markets",
+    markets: ["UK", "EU", "UAE", "US", "India"],
+  },
 ];
 
 const fade: Variants = {
