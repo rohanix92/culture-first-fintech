@@ -1,4 +1,40 @@
 import { motion, type Variants } from "framer-motion";
+import { Youtube, ArrowUpRight } from "lucide-react";
+
+type Channel = {
+  name: string;
+  handle: string;
+  href: string;
+  avatar: string;
+  note: string;
+};
+
+const pocketFmChannels: Channel[] = [
+  {
+    name: "Pocket FM Dramas",
+    handle: "@pocketfm.dramas",
+    href: "https://youtube.com/@pocketfm.dramas",
+    avatar:
+      "https://yt3.googleusercontent.com/YCUw9CM8_JOt1EgEK2rTPMZvCcHHfxaygHu-HRg38wYx5CMudXnGwM9-4dITBCTSTStXnPzS=s900-c-k-c0x00ffffff-no-rj",
+    note: "Flagship dramas channel",
+  },
+  {
+    name: "Pocket FM Hindi Drama Shows",
+    handle: "@pocketfm_hindi_drama_shows",
+    href: "https://youtube.com/@pocketfm_hindi_drama_shows",
+    avatar:
+      "https://yt3.googleusercontent.com/OeaZAkaBLXGzs5JwW14CbwF402bzxLWg1dSZSlINrx3cPQktLf0khVZSlFRzgSv-SI_k49CNZw=s900-c-k-c0x00ffffff-no-rj",
+    note: "Long-form Hindi drama IP",
+  },
+  {
+    name: "Pocket FM India Hindi",
+    handle: "@pocketfm_india_hindi",
+    href: "https://youtube.com/@pocketfm_india_hindi",
+    avatar:
+      "https://yt3.googleusercontent.com/axlXEShlRH6zyoUH1CUNuqsaj9DQ_QjcTBOyVeVVQBZhOvvhfYsruD0roSfjQRBCJ_oo-Fw5Yg=s900-c-k-c0x00ffffff-no-rj",
+    note: "India-first distribution channel",
+  },
+];
 
 type Stat = {
   k: string;
