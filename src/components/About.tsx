@@ -148,6 +148,46 @@ export function About() {
               </motion.p>
             </div>
           </div>
+
+          {/* Pocket FM channels strip */}
+          <motion.div variants={fade} className="mt-20">
+            <div className="flex items-center gap-3 mb-6">
+              <Youtube className="h-4 w-4 text-accent-2" />
+              <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
+                Pocket FM — Channels I scaled
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {pocketFmChannels.map((c) => (
+                <a
+                  key={c.handle}
+                  href={c.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-accent-2/50 transition-colors"
+                >
+                  <img
+                    src={c.avatar}
+                    alt={c.name}
+                    loading="lazy"
+                    className="h-16 w-16 rounded-full object-cover border border-border shrink-0"
+                  />
+                  <div className="min-w-0 flex-1">
+                    <div className="font-serif italic text-lg leading-tight text-fg truncate">
+                      {c.name}
+                    </div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted mt-1 truncate">
+                      {c.handle}
+                    </div>
+                    <div className="text-xs text-fg/70 mt-1.5 truncate">
+                      {c.note}
+                    </div>
+                  </div>
+                  <ArrowUpRight className="h-4 w-4 text-muted group-hover:text-accent-2 transition-colors shrink-0" />
+                </a>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
