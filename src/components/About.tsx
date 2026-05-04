@@ -90,18 +90,36 @@ export function About() {
             {/* Prose */}
             <div className="lg:col-span-7 space-y-7 text-lg md:text-xl leading-relaxed text-fg/85 max-w-[60ch]">
               <motion.p variants={fade} className="text-2xl md:text-3xl font-serif italic text-fg leading-snug">
-                I make tech feel like culture.
+                I build distribution for tech where it actually lives — in
+                culture, communities, and conversations.
               </motion.p>
               <motion.p variants={fade}>
-                <span className="text-accent">Rohan</span> — brand marketer at
-                Aspora (Sequoia, Greylock, YC), previously{" "}
-                <span className="text-accent">Pocket FM</span> ($400M+ ARR).
-                Five markets. Billboards to{" "}
-                <span className="text-accent-2">Nrishaala</span>, the content
-                IP I took 0 → 250K subs, 50M+ views.
+                Brand marketer at{" "}
+                <a
+                  href="https://www.linkedin.com/company/get-aspora/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline-offset-4 hover:underline"
+                >
+                  Aspora
+                </a>{" "}
+                (Sequoia, Greylock, YC), previously{" "}
+                <a
+                  href="https://www.fortuneindia.com/business-news/pocket-fm-doubles-arr-to-400-million-in-12-months-rides-ai-led-content-engine-to-global-scale/132830"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent underline-offset-4 hover:underline"
+                >
+                  Pocket FM
+                </a>{" "}
+                ($400M+ ARR). Scaled brands and IPs to{" "}
+                <span className="text-accent-2">1B+ organic views</span>. Drove
+                growth across global markets through OOH, communities, and
+                experiential marketing — from billboards to WhatsApp.
               </motion.p>
               <motion.p variants={fade} className="text-fg/70">
-                Measured in spreadsheets and WhatsApp forwards from aunties.
+                I care about one thing: work that shows up in CAC and revenue —
+                and in real people talking about it.
               </motion.p>
             </div>
           </div>
