@@ -18,7 +18,6 @@ type Project = {
   mediaType?: "video" | "image";
   orientation: "landscape" | "portrait";
   href?: string;
-  span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
 
