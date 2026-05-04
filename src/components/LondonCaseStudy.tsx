@@ -13,11 +13,10 @@ type Slide = {
   src: string;
   step: string;
   title: string;
-  span?: string;
 };
 
 const slides: Slide[] = [
-  { src: cover, step: "01", title: "How we made an Indian money transfer app go viral across London", span: "md:col-span-2" },
+  { src: cover, step: "01", title: "How we made an Indian money transfer app go viral across London" },
   { src: problem, step: "02", title: "The Problem — money transfer ads are boring" },
   { src: audience, step: "03", title: "Start with the audience" },
   { src: placement, step: "04", title: "Smart placement — Southall, Wembley, Ilford" },
@@ -71,7 +70,7 @@ export function LondonCaseStudy() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5 [column-fill:_balance]">
           {slides.map((s, i) => (
             <motion.figure
               key={s.step}
@@ -80,14 +79,14 @@ export function LondonCaseStudy() {
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.55, delay: (i % 3) * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className={`group overflow-hidden rounded-xl border border-border bg-card ${s.span ?? ""}`}
+              className="group overflow-hidden rounded-xl border border-border bg-card mb-4 md:mb-5 break-inside-avoid hover:border-fg/30 hover:shadow-[0_18px_50px_-20px_rgba(255,77,31,0.35)] transition-all"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-black">
+              <div className="relative overflow-hidden bg-black">
                 <img
                   src={s.src}
                   alt={s.title}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
               </div>
               <figcaption className="p-4 md:p-5">

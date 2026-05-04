@@ -128,7 +128,7 @@ export function Hero() {
               className="inline-block mr-[0.22em]"
             >
               {word === "pop" || word === "culture." ? (
-                <span className="text-accent">{word}</span>
+                <span className="text-shimmer">{word}</span>
               ) : (
                 word
               )}

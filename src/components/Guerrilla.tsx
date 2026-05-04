@@ -10,7 +10,7 @@ type Item = {
   title: string;
   city: string;
   blurb: string;
-  span?: string;
+  
   accent: "accent" | "accent-2" | "accent-3";
 };
 
@@ -20,7 +20,6 @@ const items: Item[] = [
     title: "Walking billboards by the Dubai Frame",
     city: "Dubai, UAE",
     blurb: "Six humans, six screens — Aspora literally walked the streets at golden hour.",
-    span: "md:col-span-2 md:row-span-2",
     accent: "accent",
   },
   {
@@ -35,7 +34,6 @@ const items: Item[] = [
     title: "Truck + walking screens convoy",
     city: "Midlands, UK",
     blurb: "An LED truck, an e-rickshaw and a walking-board squad — all on one high street.",
-    span: "md:col-span-2",
     accent: "accent-3",
   },
   {
@@ -94,23 +92,23 @@ export function Guerrilla() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5 [column-fill:_balance]">
           {items.map((e, i) => (
             <motion.figure
               key={e.title}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: (i % 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.55, delay: (i % 3) * 0.05, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4 }}
-              className={`group overflow-hidden rounded-xl border border-border bg-card ${e.span ?? ""}`}
+              className="group overflow-hidden rounded-xl border border-border bg-card mb-4 md:mb-5 break-inside-avoid hover:border-fg/30 hover:shadow-[0_18px_50px_-20px_rgba(255,77,31,0.35)] transition-all"
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative overflow-hidden">
                 <img
                   src={e.src}
                   alt={`${e.title} — ${e.city}`}
                   loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               </div>
               <figcaption className="p-4 md:p-5">

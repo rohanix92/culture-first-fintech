@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
 import khaleejTimes from "@/assets/khaleej-times.jpg";
 import khaleejStartup from "@/assets/khaleej-times-startup.jpg";
@@ -18,7 +18,6 @@ type Project = {
   mediaType?: "video" | "image";
   orientation: "landscape" | "portrait";
   href?: string;
-  span?: string;
   accent?: "accent" | "accent-2" | "accent-3";
 };
 
@@ -33,7 +32,6 @@ const projects: Project[] = [
     src: "/videos/video3.mp4",
     orientation: "landscape",
     href: "https://www.linkedin.com/posts/rohan-mukherjee1_kbc-aspora-sonyentertainmenttelevision-ugcPost-7405115787331481600-wx4R",
-    span: "md:col-span-2",
     accent: "accent",
   },
   {
@@ -71,7 +69,6 @@ const projects: Project[] = [
     src: "/videos/video1.mp4",
     orientation: "landscape",
     href: "https://www.linkedin.com/posts/rohan-mukherjee1_6-balls-6-sixes-fastest-fifty-that-was-ugcPost-7329376621696638976-P1ie",
-    span: "md:col-span-2",
     accent: "accent-3",
   },
   {
@@ -159,9 +156,22 @@ function ProjectCard({ p }: { p: Project }) {
   const a = accentMap[p.accent ?? "accent"];
   const isImage = p.mediaType === "image";
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
   const [hovered, setHovered] = useState(false);
+
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 20 });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 20 });
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onLeave = () => { mx.set(0); my.set(0); setHovered(false); };
 
   // Autoplay (muted) on hover, pause on leave (desktop nicety)
   useEffect(() => {
@@ -198,15 +208,18 @@ function ProjectCard({ p }: { p: Project }) {
 
   return (
     <motion.div
+      ref={cardRef}
       layout
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      style={{ rotateX: rx, rotateY: ry, transformPerspective: 1000 }}
       whileHover={{ y: -6 }}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 transition-colors ${p.span ?? ""}`}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      className="group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 hover:shadow-[0_20px_60px_-20px_rgba(255,77,31,0.35)] transition-[border-color,box-shadow] mb-5 break-inside-avoid will-change-transform"
     >
       {/* Media */}
       <div
@@ -340,7 +353,7 @@ export function Work() {
         <LayoutGroup>
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]"
           >
             <AnimatePresence mode="popLayout">
               {visible.map((p) => (
