@@ -5,9 +5,11 @@ import { Hero } from "@/components/Hero";
 import { Marquee } from "@/components/Marquee";
 import { About } from "@/components/About";
 import { Work } from "@/components/Work";
+import { LondonCaseStudy } from "@/components/LondonCaseStudy";
 import { Events } from "@/components/Events";
 import { Guerrilla } from "@/components/Guerrilla";
 import { Nrishaala } from "@/components/Nrishaala";
+import { PocketFm } from "@/components/PocketFm";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
@@ -39,9 +41,11 @@ function Index() {
       <Marquee />
       <About />
       <Work />
+      <LondonCaseStudy />
       <Events />
       <Guerrilla />
       <Nrishaala />
+      <PocketFm />
       <Contact />
       <Footer />
       <Toaster theme="dark" position="bottom-center" />
