@@ -20,7 +20,6 @@ const items: Item[] = [
     title: "Walking billboards by the Dubai Frame",
     city: "Dubai, UAE",
     blurb: "Six humans, six screens — Aspora literally walked the streets at golden hour.",
-    span: "md:col-span-2 md:row-span-2",
     accent: "accent",
   },
   {
@@ -35,7 +34,6 @@ const items: Item[] = [
     title: "Truck + walking screens convoy",
     city: "Midlands, UK",
     blurb: "An LED truck, an e-rickshaw and a walking-board squad — all on one high street.",
-    span: "md:col-span-2",
     accent: "accent-3",
   },
   {

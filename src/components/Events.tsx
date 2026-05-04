@@ -18,13 +18,13 @@ type EventItem = {
 };
 
 const events: EventItem[] = [
-  { src: leicesterMela, title: "Leicester Mela — Headline Sponsor", city: "Leicester, UK", span: "md:col-span-2 md:row-span-2", accent: "accent" },
+  { src: leicesterMela, title: "Leicester Mela — Headline Sponsor", city: "Leicester, UK", accent: "accent" },
   { src: londonStage, title: "Summer Fair Mainstage", city: "London, UK", accent: "accent-3" },
   { src: uaeNight, title: "Cashpora Activation", city: "Dubai, UAE", accent: "accent-2" },
-  { src: mascots, title: "Aspora Mascots IRL", city: "London, UK", span: "md:col-span-2", accent: "accent" },
+  { src: mascots, title: "Aspora Mascots IRL", city: "London, UK", accent: "accent" },
   { src: postcard, title: "Postcards Home", city: "London, UK", accent: "accent-3" },
   { src: googleRates, title: "Google Rates. Guaranteed.", city: "London, UK", accent: "accent-2" },
-  { src: teamBooth, title: "On-ground Team", city: "London, UK", span: "md:col-span-2", accent: "accent" },
+  { src: teamBooth, title: "On-ground Team", city: "London, UK", accent: "accent" },
   { src: oneInTwo, title: "1 in 2 NRIs Now Use Aspora", city: "Leicester, UK", accent: "accent-3" },
 ];
 
@@ -97,7 +97,7 @@ export function Events() {
         </div>
 
         {/* Mosaic */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-4 md:gap-5 [column-fill:_balance]">
           {events.map((e, i) => {
             const a = e.accent ?? "accent";
             return (
@@ -108,14 +108,14 @@ export function Events() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.55, delay: (i % 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className={`group overflow-hidden rounded-xl border border-border bg-card ${e.span ?? ""}`}
+                className="group overflow-hidden rounded-xl border border-border bg-card mb-4 md:mb-5 break-inside-avoid hover:border-fg/30 hover:shadow-[0_18px_50px_-20px_rgba(255,77,31,0.35)] transition-all"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative overflow-hidden">
                   <img
                     src={e.src}
                     alt={`${e.title} — ${e.city}`}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="block w-full h-auto transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>
                 <figcaption className="p-3 md:p-4">
