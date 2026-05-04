@@ -1,40 +1,4 @@
 import { motion, type Variants } from "framer-motion";
-import { Youtube, ArrowUpRight } from "lucide-react";
-
-type Channel = {
-  name: string;
-  handle: string;
-  href: string;
-  avatar: string;
-  note: string;
-};
-
-const pocketFmChannels: Channel[] = [
-  {
-    name: "Pocket FM Dramas",
-    handle: "@pocketfm.dramas",
-    href: "https://youtube.com/@pocketfm.dramas",
-    avatar:
-      "https://yt3.googleusercontent.com/YCUw9CM8_JOt1EgEK2rTPMZvCcHHfxaygHu-HRg38wYx5CMudXnGwM9-4dITBCTSTStXnPzS=s900-c-k-c0x00ffffff-no-rj",
-    note: "Flagship dramas channel",
-  },
-  {
-    name: "Pocket FM Hindi Drama Shows",
-    handle: "@pocketfm_hindi_drama_shows",
-    href: "https://youtube.com/@pocketfm_hindi_drama_shows",
-    avatar:
-      "https://yt3.googleusercontent.com/OeaZAkaBLXGzs5JwW14CbwF402bzxLWg1dSZSlINrx3cPQktLf0khVZSlFRzgSv-SI_k49CNZw=s900-c-k-c0x00ffffff-no-rj",
-    note: "Long-form Hindi drama IP",
-  },
-  {
-    name: "Pocket FM India Hindi",
-    handle: "@pocketfm_india_hindi",
-    href: "https://youtube.com/@pocketfm_india_hindi",
-    avatar:
-      "https://yt3.googleusercontent.com/axlXEShlRH6zyoUH1CUNuqsaj9DQ_QjcTBOyVeVVQBZhOvvhfYsruD0roSfjQRBCJ_oo-Fw5Yg=s900-c-k-c0x00ffffff-no-rj",
-    note: "India-first distribution channel",
-  },
-];
 
 type Stat = {
   k: string;
@@ -149,45 +113,6 @@ export function About() {
             </div>
           </div>
 
-          {/* Pocket FM channels strip */}
-          <motion.div variants={fade} className="mt-20">
-            <div className="flex items-center gap-3 mb-6">
-              <Youtube className="h-4 w-4 text-accent-2" />
-              <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-muted">
-                Pocket FM — Channels I scaled
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {pocketFmChannels.map((c) => (
-                <a
-                  key={c.handle}
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-accent-2/50 transition-colors"
-                >
-                  <img
-                    src={c.avatar}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-16 w-16 rounded-full object-cover border border-border shrink-0"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="font-serif italic text-lg leading-tight text-fg truncate">
-                      {c.name}
-                    </div>
-                    <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted mt-1 truncate">
-                      {c.handle}
-                    </div>
-                    <div className="text-xs text-fg/70 mt-1.5 truncate">
-                      {c.note}
-                    </div>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted group-hover:text-accent-2 transition-colors shrink-0" />
-                </a>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>
