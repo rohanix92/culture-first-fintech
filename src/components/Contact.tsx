@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, Youtube } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin } from "lucide-react";
 import { toast } from "sonner";
 
 const rows = [
