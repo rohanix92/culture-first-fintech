@@ -89,26 +89,19 @@ export function About() {
 
             {/* Prose */}
             <div className="lg:col-span-7 space-y-7 text-lg md:text-xl leading-relaxed text-fg/85 max-w-[60ch]">
-              <motion.p variants={fade}>
-                I'm <span className="text-accent">Rohan</span> — a brand
-                marketer at Aspora (Sequoia, Greylock, Y Combinator-backed),
-                previously at <span className="text-accent">Pocket FM</span>{" "}
-                (a global audio-series company out of India, now at $400M+
-                ARR). I build campaigns that make tech feel like culture —
-                across five markets, multiple formats, and every surface that
-                matters.
+              <motion.p variants={fade} className="text-2xl md:text-3xl font-serif italic text-fg leading-snug">
+                I make tech feel like culture.
               </motion.p>
               <motion.p variants={fade}>
-                Celebrity films, cricket-season takeovers, front-page newspaper
-                gambles, guerrilla street activations, cultural events, and{" "}
-                <span className="text-accent-2">Nrishaala</span> — the content
-                IP I built from zero to 250K+ subs and 50M+ views. At Pocket
-                FM, I led content marketing and grew distribution channels to
-                hundreds of millions of views.
+                <span className="text-accent">Rohan</span> — brand marketer at
+                Aspora (Sequoia, Greylock, YC), previously{" "}
+                <span className="text-accent">Pocket FM</span> ($400M+ ARR).
+                Five markets. Billboards to{" "}
+                <span className="text-accent-2">Nrishaala</span>, the content
+                IP I took 0 → 250K subs, 50M+ views.
               </motion.p>
-              <motion.p variants={fade}>
-                I think in campaigns, ship in sprints, and measure in both
-                spreadsheets and WhatsApp forwards from aunties.
+              <motion.p variants={fade} className="text-fg/70">
+                Measured in spreadsheets and WhatsApp forwards from aunties.
               </motion.p>
             </div>
           </div>
