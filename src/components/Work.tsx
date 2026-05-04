@@ -32,7 +32,6 @@ const projects: Project[] = [
     src: "/videos/video3.mp4",
     orientation: "landscape",
     href: "https://www.linkedin.com/posts/rohan-mukherjee1_kbc-aspora-sonyentertainmenttelevision-ugcPost-7405115787331481600-wx4R",
-    span: "md:col-span-2",
     accent: "accent",
   },
   {
@@ -70,7 +69,6 @@ const projects: Project[] = [
     src: "/videos/video1.mp4",
     orientation: "landscape",
     href: "https://www.linkedin.com/posts/rohan-mukherjee1_6-balls-6-sixes-fastest-fifty-that-was-ugcPost-7329376621696638976-P1ie",
-    span: "md:col-span-2",
     accent: "accent-3",
   },
   {
