@@ -208,15 +208,18 @@ function ProjectCard({ p }: { p: Project }) {
 
   return (
     <motion.div
+      ref={cardRef}
       layout
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      style={{ rotateX: rx, rotateY: ry, transformPerspective: 1000 }}
       whileHover={{ y: -6 }}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 hover:shadow-[0_20px_60px_-20px_rgba(255,77,31,0.35)] transition-all mb-5 break-inside-avoid"
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      className="group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 hover:shadow-[0_20px_60px_-20px_rgba(255,77,31,0.35)] transition-[border-color,box-shadow] mb-5 break-inside-avoid will-change-transform"
     >
       {/* Media */}
       <div
