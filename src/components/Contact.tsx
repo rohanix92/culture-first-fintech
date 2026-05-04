@@ -18,13 +18,6 @@ const rows = [
     accent: "accent-3",
     href: "https://www.linkedin.com/in/rohan-mukherjee1/",
   },
-  {
-    label: "Nrishaala",
-    value: "@NRIShaala",
-    Icon: Youtube,
-    accent: "accent-2",
-    href: "https://www.youtube.com/@NRIShaala",
-  },
 ] as const;
 
 export function Contact() {
