@@ -203,7 +203,7 @@ function ProjectCard({ p }: { p: Project }) {
       whileHover={{ y: -6 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 transition-colors ${p.span ?? ""}`}
+      className="group relative flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:border-fg/30 hover:shadow-[0_20px_60px_-20px_rgba(255,77,31,0.35)] transition-all mb-5 break-inside-avoid"
     >
       {/* Media */}
       <div
@@ -337,7 +337,7 @@ export function Work() {
         <LayoutGroup>
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]"
           >
             <AnimatePresence mode="popLayout">
               {visible.map((p) => (
