@@ -48,17 +48,13 @@ export function Contact() {
         <div className="mt-16 text-left">
           {rows.map((r, i) => {
             const accentText =
-              r.accent === "accent-2"
-                ? "group-hover:text-accent-2"
-                : r.accent === "accent-3"
-                  ? "group-hover:text-accent-3"
-                  : "group-hover:text-accent";
+              r.accent === "accent-3"
+                ? "group-hover:text-accent-3"
+                : "group-hover:text-accent";
             const accentBar =
-              r.accent === "accent-2"
-                ? "bg-accent-2"
-                : r.accent === "accent-3"
-                  ? "bg-accent-3"
-                  : "bg-accent";
+              r.accent === "accent-3"
+                ? "bg-accent-3"
+                : "bg-accent";
             const handleClick = (e: React.MouseEvent) => {
               if ("copy" in r && r.copy) {
                 e.preventDefault();
