@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX, ArrowUpRight } from "lucide-react";
 import khaleejTimes from "@/assets/khaleej-times.jpg";
 import khaleejStartup from "@/assets/khaleej-times-startup.jpg";
@@ -156,9 +156,22 @@ function ProjectCard({ p }: { p: Project }) {
   const a = accentMap[p.accent ?? "accent"];
   const isImage = p.mediaType === "image";
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
   const [hovered, setHovered] = useState(false);
+
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const rx = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 20 });
+  const ry = useSpring(useTransform(mx, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 20 });
+
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onLeave = () => { mx.set(0); my.set(0); setHovered(false); };
 
   // Autoplay (muted) on hover, pause on leave (desktop nicety)
   useEffect(() => {
