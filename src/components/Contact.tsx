@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, Youtube } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin } from "lucide-react";
 import { toast } from "sonner";
 
 const rows = [
@@ -17,13 +17,6 @@ const rows = [
     Icon: Linkedin,
     accent: "accent-3",
     href: "https://www.linkedin.com/in/rohan-mukherjee1/",
-  },
-  {
-    label: "Nrishaala",
-    value: "@NRIShaala",
-    Icon: Youtube,
-    accent: "accent-2",
-    href: "https://www.youtube.com/@NRIShaala",
   },
 ] as const;
 
@@ -55,17 +48,13 @@ export function Contact() {
         <div className="mt-16 text-left">
           {rows.map((r, i) => {
             const accentText =
-              r.accent === "accent-2"
-                ? "group-hover:text-accent-2"
-                : r.accent === "accent-3"
-                  ? "group-hover:text-accent-3"
-                  : "group-hover:text-accent";
+              r.accent === "accent-3"
+                ? "group-hover:text-accent-3"
+                : "group-hover:text-accent";
             const accentBar =
-              r.accent === "accent-2"
-                ? "bg-accent-2"
-                : r.accent === "accent-3"
-                  ? "bg-accent-3"
-                  : "bg-accent";
+              r.accent === "accent-3"
+                ? "bg-accent-3"
+                : "bg-accent";
             const handleClick = (e: React.MouseEvent) => {
               if ("copy" in r && r.copy) {
                 e.preventDefault();
